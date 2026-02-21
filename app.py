@@ -9,10 +9,22 @@ app = Flask(__name__)
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
 def get_sheet():
-    creds_dict = json.loads(os.environ.get("GOOGLE_CREDENTIALS_JSON"))
+    creds_dict = json.loads({
+  "type": "service_account",
+  "project_id": "nayansaathi",
+  "private_key_id": "477944b6b308e87f6ca4d4b84f4dd5fd39b47910",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDVhdnLuSjZ/xMo\nq+VT9jTAdhVfK+rmhgdZnu6rp/TflBRG+/yo+aW2U1jTNe8WTfjxqoAFAkd6NwW1\nJlRLooTnWPuYMe8PJ2yC31DlNZeW1tP4DxTyexa61kGQ34YRLzLSCl4a5Mj5BnTL\nvfot1scNQV7Thk5Jsu9kNLcNuewtdaFcaQ5XECbcV/pPtqNNEqVEYJB3uKtoxi2z\nQZGm7w+yrtzjrn21QO9qyRITBwnol9ahPmCBp2Vj6uUu+OFDH/mgAwd26un1Zb7Y\nKWLIr3EdDTLGSNsLY3rlulrmn1PSkkhRBFWey76R8Hmg3gvUI1u3AFAq88BONVqi\n+MIGrt8RAgMBAAECggEACC6+d3OrkJsZUVwxCCQtxlhgHksRD+9/9ZvFGrfvhufm\nVQgQGSukAZY1F7b/6BNp4Fz/1fFN6u2T3urOnS1nuXPsBFuZhTOmEWfcckQ5AHNQ\nITf2vgogh11xmssuGJd985WpII+28fAg5rPrk/kgnK3uI94IPwPH78ejYjfHSMCg\n1xvnjg3K3Exil/rnECPvzMxdzG2GkIqaDZz2RPSC41JSWNTJFRq9ybA30/MIv+uA\niF3dBCCvHm1nse9Y4BZ+DaXYRuWel1+dCAjxrIjM2gm3rT8XaO+yVba41cI8wmCy\n+2zm9JLnooZ3qeyQQZqAQStTNXwRHJgClbZtntiL5wKBgQDvrbxA6kAqyWY7DjXz\n3Ufx6GTowjE06AKqlWqWLSj4kbO2IXJRashgilVB+foqpbjUtF5OEV38ct3L9Obm\nnVcG7hPi94R9f2GKM+62edCVTolU3qobZbQrkPKs4tQG0t1Sv/nuqCBD3/8ZowwS\nswz0GudbGiNyR2K8hD4stpm2WwKBgQDkECWtEO/l2ADK/d8rycwIJFzWKOHTWvs1\nOCLu2Dw+l9zCPTORkhhyszHChiFxIRsz4oo0/oLfuyCODmNw/woEQ42aJwlPkHJa\nFgmsg59d/T5T8dY78wonYiCPB5vzsgojEOzNqV6NDMDJF/E/ZMtl3A0YQFYhaliW\ngOMeLan0AwKBgD0iBz5XgX5oWFb/zOsiqdMd/38O6RYhh2yTJ9ieNDESmM//v/Tc\nU7esEQr/A7wVAQvf5Z3r+BkIA2KeWLbBswzldNUTZQvNjcd+b4jDkVxD5+tpz+Gl\nE0t5cSx/vqzu49zTcqBY6cHmRF75o36xhMBOjGxEQn5Hjvuej21ANfy5AoGBAJhq\nrjNOqXVreYQwTLEACWq7movKALp3CIIVxUromsKeTXxG2KsF/27QkYXWjI0Fuh9f\n3Ev0eFS7w9MMjKrc173nw7/tLMzO1Y2dQtPXl2+CKuCBNFMWZ4fQjb/pLvGb4Ch1\nTD1aXwVXK5R5etKKM2Ecwmedv7JPV2smMiNeE0IvAoGAeQOn9wplQOcDr1/pXqyE\nCd7j/u6Q8Q7FQgRplXrbK0986EogkRD3RqgNndjBsm2nGF5TqgsoKeOn+sEBHc4r\nHBfTWtQCyhqE4HlQpN/MNUuJCTV/iSsBlXqklvRMzw7Lvhxa5cwxcNR9fa3D8hAc\n631fCRzPDS8xoLe65ejLL8g=\n-----END PRIVATE KEY-----\n",
+  "client_email": "talentio-form-inputs@nayansaathi.iam.gserviceaccount.com",
+  "client_id": "101033883099710036821",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/talentio-form-inputs%40nayansaathi.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+})
     creds = Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
     client = gspread.authorize(creds)
-    return client.open_by_key(os.environ.get("GOOGLE_SHEET_ID")).sheet1
+    return client.open_by_key(https://docs.google.com/spreadsheets/d/14Jkz9EFGQ3nC5iGN7pCkqu4vZY10h2PYoyLZxJuO3H4/edit?gid=0#gid=0).sheet1
 
 HEADERS = [
     "submitted_at",
@@ -708,3 +720,4 @@ def index():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
